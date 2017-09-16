@@ -1,14 +1,23 @@
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 /**
  * Created by niceyuanze on 17-6-2.
  */
 public class SomethingToTest {
     public static void main(String[] args) {
 
+        CommunityFilterDTO communityFilterDTO =
+                new CommunityFilterDTO();
+        System.out.println(communityFilterDTO);
+
+
+
         System.out.println("请输入你的程序:");
         System.out.println("z:=x+y;end #");
         System.out.println("您的程序语法有错误");
 
-
+        System.out.println(Boolean.valueOf("1"));
+        System.out.println(Boolean.valueOf("0"));
 
 
 
