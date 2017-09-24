@@ -1,46 +1,34 @@
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.junit.Test;
+
+import java.time.LocalDate;
+import java.util.Arrays;
 
 /**
  * Created by niceyuanze on 17-6-2.
  */
 public class SomethingToTest {
     public static void main(String[] args) {
-
-        CommunityFilterDTO communityFilterDTO =
-                new CommunityFilterDTO();
-        System.out.println(communityFilterDTO);
-
-
-
-        System.out.println("请输入你的程序:");
-        System.out.println("z:=x+y;end #");
-        System.out.println("您的程序语法有错误");
-
-        System.out.println(Boolean.valueOf("1"));
-        System.out.println(Boolean.valueOf("0"));
+        LocalDate localDate  = LocalDate.now();
+        System.out.println(localDate.getYear());
+        System.out.println(localDate);
+        String test = "25";
+        System.out.println(test.split("-"));
+        Arrays.stream(test.split("-")).forEach(x -> System.out.println(x));
 
 
 
 
 
 
-//        Integer i1 = new Integer(1);
-//        Integer i2= new Integer(1);
-//        Integer i3 = Integer.parseInt("1");
-//        Integer i4 = Integer.parseInt("1");
-//        Integer i5 = 1;
-//        Integer i6= 1;
-//        int i7 = 1;
-//        Integer i8 = Integer.valueOf("1");
-//        System.out.println(i1 == i2);
-//        System.out.println(i3 == i4);
-//        System.out.println(i5 == i6);
-//        System.out.println(i6 == i7);
-//        System.out.println(i8 == i7);
 
-//        System.out.println(Integer.MIN_VALUE);
-//        System.out.println(Character.MIN_RADIX);
-//        System.out.println(new Integer(1));
+
+
+
+
+    }
+    @Test
+    public void testAnnotation(){
 
     }
 }
