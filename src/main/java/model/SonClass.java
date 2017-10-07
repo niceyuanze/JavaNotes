@@ -1,4 +1,4 @@
 package model;
 
-public class SonClass {
+public class SonClass extends FatherClass{
 }
