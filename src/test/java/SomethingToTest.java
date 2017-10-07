@@ -29,6 +29,8 @@ public class SomethingToTest {
     }
     @Test
     public void testAnnotation(){
+        int[] x = new int[3];
+        System.out.println(x.length);
 
     }
 }
