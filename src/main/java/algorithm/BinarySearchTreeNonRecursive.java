@@ -45,10 +45,12 @@ public class BinarySearchTreeNonRecursive<K extends Comparable<K>, V> {
         System.out.println("R" + binarySearchTreeNonRecursive.rank("R"));
         System.out.println("S" + binarySearchTreeNonRecursive.rank("S"));
         System.out.println("X" + binarySearchTreeNonRecursive.rank("X"));
-        System.out.println("DELETE MIN");
-        binarySearchTreeNonRecursive.deleteMin();
+//        System.out.println("DELETE MIN");
+//        binarySearchTreeNonRecursive.deleteMin();
+//        binarySearchTreeNonRecursive.middleOrder();
+        System.out.println("DELETE S");
+        binarySearchTreeNonRecursive.delete("S");
         binarySearchTreeNonRecursive.middleOrder();
-
 
 
 
@@ -71,12 +73,12 @@ public class BinarySearchTreeNonRecursive<K extends Comparable<K>, V> {
             return node;
         }
         LinkedList<Node> path = new LinkedList<>();
-        while(node != null){
+        while(true){
             if( node.key.compareTo(key) < 0){
                 if( node.right == null){
                     path.add(node);
                     node.right = new Node(key, value, 1);
-                    increase(path);
+                    selfIncrease(path);
                     return path.getFirst();
                 }
                 path.add(node);
@@ -85,7 +87,7 @@ public class BinarySearchTreeNonRecursive<K extends Comparable<K>, V> {
                 if(node.left == null){
                     path.add(node);
                     node.left = new Node(key, value, 1);
-                    increase(path);
+                    selfIncrease(path);
                     return path.getFirst();
                 }
                 path.add(node);
@@ -96,22 +98,46 @@ public class BinarySearchTreeNonRecursive<K extends Comparable<K>, V> {
                 return path.getFirst();
             }
         }
-        return null;
     }
-    private void increase(List<Node> list){
+    private void selfIncrease(List<Node> list){
         list.forEach( e -> e.N++);
     }
 
     public void middleOrder(){
         middleOrder(root);
     }
-    private void middleOrder(Node root){
-        if( root.left != null){
-            middleOrder( root.left);
-        }
-        System.out.println(root);
-        if( root.right != null){
-            middleOrder( root.right);
+    private void middleOrder(Node node){
+        LinkedList<Node> path = new LinkedList<>();
+        while(node != null || path.size() != 0){
+
+            //这是别人写的，下面是我写的，我觉得我写的思路不是很清晰，学习依稀ｓ
+            while(node != null){
+                path.add( node);
+                node = node.left;
+            }
+            node = path.pollLast();
+            System.out.println(node);
+            node = node.right;
+
+//            if(node == null){
+//                if(path.size() != 0){
+//                    node = path.pollLast();
+//                    System.out.println(node);
+//                    node = node.right;
+//                    continue;
+//                }else{
+//                    break;
+//                }
+//            }
+//
+//            if( node.left != null){
+//                path.add(node);
+//                node = node.left;
+//            }else{
+//                System.out.println(node);
+//                node = node.right;
+//            }
+
         }
     }
 
@@ -247,32 +273,68 @@ public class BinarySearchTreeNonRecursive<K extends Comparable<K>, V> {
         }
     }
 
-//    private Node delete(Node node, K key){
-//        if( node == null){
-//            return null;
-//        }
-//        Node tmp = node;
-//        int cmp = key.compareTo(node.key);
-//        if( cmp < 0){
-//            tmp = node;
-//            node = node.left;
-//        }else if( cmp > 0){
-//            tmp = node;
-//            node = node.right;
-//        }else{
-//            if(node.left != null && node.right != null){
-//                Node next = min(node.right);
-//
-//            }
-//            if(node.left == null && node.right == null){
-//                if(tmp.left == node){
-//                    tmp.left = null;
-//                }else if(tmp.right == node){
-//                    tmp.right = null;
-//                }
-//            }
-//        }
-//    }
+
+    public Node delete(K key){
+        root = delete( root, key);
+        return root;
+    }
+
+    private Node delete(Node node, K key){
+        if( node == null){
+            return null;
+        }
+        LinkedList<Node> path = new LinkedList<>();
+        int flag = 0;
+        while(true){
+            int cmp = key.compareTo(node.key);
+            if( cmp < 0){
+                flag = 0;
+                path.add(node);
+                node = node.left;
+            }else if( cmp > 0){
+                flag = 1;
+                path.add(node);
+                node = node.right;
+            }else{
+                if(node.left == null){
+                    Node last = path.getLast();
+                    if( flag == 0){
+                        last.left = node.right;
+                    }else{
+                        last.right = node.right;
+                    }
+                    return path.getFirst();
+                }
+                if(node.right == null){
+                    Node last = path.getLast();
+                    if( flag == 0){
+                        last.left = node.left;
+                    }else{
+                        last.right = node.left;
+                    }
+                    return path.getFirst();
+                }
+                Node t = node;
+                node = min(node.right);
+                node.right = deleteMin(t.right);
+                node.left = t.left;
+                node.N = t.N - 1;
+                if(path.size() == 0){
+                    return node;
+                }
+                Node last = path.getLast();
+                if( flag == 0){
+                    last.left = node;
+                }else{
+                    last.right = node;
+                }
+                return path.getFirst();
+
+            }
+        }
+
+
+    }
 
 
     public Node deleteMin(){
@@ -287,7 +349,7 @@ public class BinarySearchTreeNonRecursive<K extends Comparable<K>, V> {
         LinkedList<Node> path = new LinkedList<>();
         while(true){
             if(node.left == null){
-                if(path.getLast() != null){
+                if(path.size() != 0){
                     path.getLast().left = node.right;
                     path.forEach( e -> e.N--);
                 }else{
@@ -308,6 +370,41 @@ public class BinarySearchTreeNonRecursive<K extends Comparable<K>, V> {
 //        }
 //
 //        while(true)
+//    }
+
+//    private Iterable<K> keys(Node node, K low, K high){
+//        if( node == null){
+//            return null;
+//        }
+//        LinkedList<K> result = new LinkedList<>();
+//        LinkedList<Node> path = new LinkedList<>();
+//        while(node != null){
+//            int cmplow = low.compareTo(node.key);
+//            if( cmplow < 0){
+//                path.add(node);
+//                node = node.left;
+//            }else{
+//                break;
+//            }
+//        }
+//        while( path.size() != 0){
+//            node = path.pollLast();
+//            int cmphigh = high.compareTo(node.key);
+//            if( cmphigh > 0){
+//                result.add(node.key);
+//            }
+//        }
+////        if(cmplow < 0 && cmphigh > 0){
+////            result.add(node.key);
+////            node = path.pollLast();
+////        }
+////        if(cmphigh > 0){
+////            path.add(node);
+////            node = node.right;
+////            continue;
+////        }
+//
+//
 //    }
 
 
