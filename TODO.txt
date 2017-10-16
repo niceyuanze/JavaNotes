@@ -1,6 +1,8 @@
 
 
 
+
+20171016 AbstractSet removeAll这个方法好像有点小问题，没太搞懂
 ArrayList 优化
 20171008 默写binary search tree
 20171007 treeset treemap, 今天突然又看到了arrayList copy on right list 不如从这着手来入门入门并发
