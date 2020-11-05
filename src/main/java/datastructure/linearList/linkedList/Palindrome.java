@@ -18,7 +18,7 @@ public class Palindrome {
         if(input.length() == 1 || input.length() == 2){
             return true;
         }
-        HomeMadeLinkedList<Byte> linkedList1 = convertStringToLinkedList(input);
+        HomeMadeSinglyLinkedList<Byte> linkedList1 = convertStringToLinkedList(input);
         Node<Byte> prev = null;
         Node<Byte> slow = linkedList1.getHead();
         Node<Byte> fast = linkedList1.getHead();
@@ -43,11 +43,11 @@ public class Palindrome {
         }
         return true;
     }
-    public static HomeMadeLinkedList convertStringToLinkedList(String input){
-        HomeMadeLinkedList homeMadeLinkedList = new HomeMadeLinkedList();
+    public static HomeMadeSinglyLinkedList convertStringToLinkedList(String input){
+        HomeMadeSinglyLinkedList homeMadeSinglyLinkedList = new HomeMadeSinglyLinkedList();
         for(Byte c: input.getBytes()){
-            homeMadeLinkedList.put(c);
+            homeMadeSinglyLinkedList.put(c);
         }
-        return  homeMadeLinkedList;
+        return homeMadeSinglyLinkedList;
     }
 }
