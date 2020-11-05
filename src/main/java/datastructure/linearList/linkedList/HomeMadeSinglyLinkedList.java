@@ -93,6 +93,35 @@ public class HomeMadeSinglyLinkedList<T> {
         return false;
     }
 
+    public Node deleteNth(int lastnth){
+        Node[] cache = new Node[length];
+        Node curr = head;
+        int index = 0;
+        while( curr != null){
+            cache[index++] = curr;
+            curr = curr.getNext();
+        }
+        if(lastnth == cache.length - 1){
+            head = cache[cache.length - lastnth];
+        }else{
+            cache[cache.length -2 - lastnth].setNext(cache[cache.length -1 - lastnth].getNext());
+        }
+
+        return  cache[cache.length -1 - lastnth];
+    }
+
+    public Node getMiddle(){
+        Node slow = head.getNext();
+        Node fast = head.getNext().getNext();
+        while( fast != null && fast.getNext() != null){
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+        }
+        return slow;
+    }
+
+
+
 
 
     @Override
