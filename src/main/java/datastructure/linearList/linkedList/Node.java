@@ -5,12 +5,20 @@ public class Node<T> {
     private T data;
     private Node next;
 
+    private Node prev;
+
     public Node(T data) {
         this.data = data;
     }
 
     public T getData() {
         return data;
+    }
+
+    public Node(T data, Node next, Node prev){
+        this.data = data;
+        this.next = next;
+        this.prev = prev;
     }
 
     public void setData(T data) {
@@ -28,5 +36,13 @@ public class Node<T> {
     @Override
     public String toString() {
         return ""+data;
+    }
+
+    public Node getPrev() {
+        return prev;
+    }
+
+    public void setPrev(Node prev) {
+        this.prev = prev;
     }
 }
