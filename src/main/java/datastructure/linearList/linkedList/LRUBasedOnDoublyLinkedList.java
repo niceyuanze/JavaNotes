@@ -1,6 +1,6 @@
 package datastructure.linearList.linkedList;
 
-public class LRULinkedList<T> {
+public class LRUBasedOnDoublyLinkedList<T> {
 
     private Node<T> head;
 
@@ -11,12 +11,12 @@ public class LRULinkedList<T> {
 
     private int length;
 
-    public LRULinkedList() {
+    public LRUBasedOnDoublyLinkedList() {
     }
 
-    public LRULinkedList(int max) {
+    public LRUBasedOnDoublyLinkedList(int max) {
         this.max = max;
-        LRULinkedList l = null;
+        LRUBasedOnDoublyLinkedList l = null;
 
     }
 
@@ -78,17 +78,17 @@ public class LRULinkedList<T> {
     }
 
     public static void main(String[] args) {
-        LRULinkedList<Integer> lruLinkedList = new LRULinkedList<>();
-        lruLinkedList.add(1);
-        System.out.println(lruLinkedList);
-        lruLinkedList.add(1);
-        System.out.println(lruLinkedList);
-        lruLinkedList.add(2);
-        lruLinkedList.add(3);
-        lruLinkedList.add(1);
-        System.out.println(lruLinkedList);
-        lruLinkedList.add(1);
-        System.out.println(lruLinkedList);
+        LRUBasedOnDoublyLinkedList<Integer> lruBasedOnDoublyLinkedList = new LRUBasedOnDoublyLinkedList<>();
+        lruBasedOnDoublyLinkedList.add(1);
+        System.out.println(lruBasedOnDoublyLinkedList);
+        lruBasedOnDoublyLinkedList.add(1);
+        System.out.println(lruBasedOnDoublyLinkedList);
+        lruBasedOnDoublyLinkedList.add(2);
+        lruBasedOnDoublyLinkedList.add(3);
+        lruBasedOnDoublyLinkedList.add(1);
+        System.out.println(lruBasedOnDoublyLinkedList);
+        lruBasedOnDoublyLinkedList.add(1);
+        System.out.println(lruBasedOnDoublyLinkedList);
 
 
 
