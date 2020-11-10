@@ -20,6 +20,7 @@ public class StackBasedOnArray<T> {
     public boolean push(T item){
         if( this.size == capacity){
             this.data = ArrayUtil.grow(this.data);
+            capacity = capacity * 2;
             System.out.println("À©ÈÝ");
         }
         this.data[this.head] = item;
@@ -38,9 +39,11 @@ public class StackBasedOnArray<T> {
     @Override
     public String toString() {
         StringBuffer stringBuffer = new StringBuffer();
-        for(int i = 0 ; i < size; i++){
+        stringBuffer.append("top:");
+        for(int i = size-1 ; i > -1; i--){
             stringBuffer.append(data[i]);
         }
+        stringBuffer.append(":buttom");
         return stringBuffer.toString();
     }
 
@@ -50,6 +53,8 @@ public class StackBasedOnArray<T> {
         stackBasedOnArray.push(2);
         stackBasedOnArray.push(3);
         stackBasedOnArray.push(4);
+        stackBasedOnArray.push(5);
+
 
         System.out.println(stackBasedOnArray);
         stackBasedOnArray.pop();
