@@ -12,6 +12,8 @@ public class LRUBasedOnSinglyLinkedList<T> {
         this.max = 3;
     }
 
+//                两种情况，没找到，删除了不用size++,找到了
+
     public boolean add(T data){
         Node<T> cache = find(data);
         if(cache == null){
@@ -25,6 +27,7 @@ public class LRUBasedOnSinglyLinkedList<T> {
 
                 }
                 current.setNext(null);
+                return true;
             }
         }else{
             Node current = head;
@@ -33,11 +36,12 @@ public class LRUBasedOnSinglyLinkedList<T> {
                 current = current.getNext();
             }
             if(current == cache){
-
+                return true;
             }else if(current.getNext() == cache){
                 current.setNext(cache.getNext());
                 cache.setNext(head);
                 head = cache;
+                return true;
             }else{
                 return false;
             }
@@ -71,13 +75,19 @@ public class LRUBasedOnSinglyLinkedList<T> {
         System.out.println(lruBasedOnSinglyLinkedList);
         lruBasedOnSinglyLinkedList.add(1);
         System.out.println(lruBasedOnSinglyLinkedList);
-        lruBasedOnSinglyLinkedList.add(2);
+        lruBasedOnSinglyLinkedList.add(1);
         System.out.println(lruBasedOnSinglyLinkedList);
-        lruBasedOnSinglyLinkedList.add(3);
-        System.out.println(lruBasedOnSinglyLinkedList);
-        lruBasedOnSinglyLinkedList.add(4);
+        lruBasedOnSinglyLinkedList.add(1);
         System.out.println(lruBasedOnSinglyLinkedList);
         lruBasedOnSinglyLinkedList.add(2);
         System.out.println(lruBasedOnSinglyLinkedList);
+//        lruBasedOnSinglyLinkedList.add(2);
+//        System.out.println(lruBasedOnSinglyLinkedList);
+//        lruBasedOnSinglyLinkedList.add(3);
+//        System.out.println(lruBasedOnSinglyLinkedList);
+//        lruBasedOnSinglyLinkedList.add(4);
+//        System.out.println(lruBasedOnSinglyLinkedList);
+//        lruBasedOnSinglyLinkedList.add(2);
+//        System.out.println(lruBasedOnSinglyLinkedList);
     }
 }
