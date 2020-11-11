@@ -1,6 +1,6 @@
 package datastructure.linearList.stack;
 
-import datastructure.ArrayUtil;
+import datastructure.util.ArrayUtil;
 
 
 public class StackBasedOnArray<T> {

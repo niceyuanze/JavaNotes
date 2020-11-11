@@ -1,4 +1,4 @@
-package datastructure;
+package datastructure.util;
 
 public class ArrayUtil {
 
