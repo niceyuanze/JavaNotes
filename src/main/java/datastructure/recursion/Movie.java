@@ -2,6 +2,10 @@ package datastructure.recursion;
 
 public class Movie {
 //    F(n) = F(n-1) + 1
+    /*
+    * F(n) = F(n-1) + 1
+    * F(1) = 1
+    * */
     public static int getNowRecursion(int n){
         if(n < 1){
             return 0;
@@ -11,8 +15,8 @@ public class Movie {
         }
         return getNowRecursion(n - 1,0)+1;
     }
-    public static int getNowRecursion(int n,int deepth ){
-        if(deepth > 50){
+    public static int getNowRecursion(int n,int depth ){
+        if(depth > 50){
             System.out.println("Õ»±¬Õ¨");
             throw new RuntimeException();
         }
@@ -22,8 +26,8 @@ public class Movie {
         if( n == 1){
             return 1;
         }
-        deepth++;
-        return getNowRecursion(n - 1,deepth)+1;
+        depth++;
+        return getNowRecursion(n - 1,depth)+1;
     }
     public static int getNowNonRecursion(int n){
         if( n < 1){
