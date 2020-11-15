@@ -12,4 +12,11 @@ public class ArrayUtil {
         }
         return newArray;
     }
+    public static <T> String dump(T[] input){
+        StringBuffer s = new StringBuffer();
+        for(T each: input){
+            s.append(each);
+        }
+        return s.toString();
+    }
 }
