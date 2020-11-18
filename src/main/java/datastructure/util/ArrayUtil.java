@@ -19,4 +19,9 @@ public class ArrayUtil {
         }
         return s.toString();
     }
+    public static <T> void swap(T[] input, int i, int j){
+        T tmp = input[i];
+        input[i] = input[j];
+        input[j] = tmp;
+    }
 }
