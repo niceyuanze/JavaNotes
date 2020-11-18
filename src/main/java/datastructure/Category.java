@@ -17,12 +17,15 @@ public class Category {
 //    如果数据存储在链表中，这三种排序算法还能工作吗？如果能，那相应的时间、空间复杂度又是多少呢？
 //    欢迎留言和我分享，我会第一时间给你反馈。
 //    如何在 O(n) 的时间复杂度内查找一个无序数组中的第 K 大元素？
-//    希尔排序
+//    希尔排序 https://github.com/wangzheng0822/algo/blob/master/java/11_sorts/SortsAddOn.java
 //    第k大元素
+//    哨兵归并排序
+//    修复快排bug
 
 
 
 //    done
+//    第k大元素
 
     public static void main(String[] args) {
         System.out.println(1);
