@@ -16,6 +16,15 @@ public class ArrayUtil {
         StringBuffer s = new StringBuffer();
         for(T each: input){
             s.append(each);
+            s.append(",");
+        }
+        return s.toString();
+    }
+    public static  String dump(int[] input){
+        StringBuffer s = new StringBuffer();
+        for(int each: input){
+            s.append(each);
+            s.append(",");
         }
         return s.toString();
     }
