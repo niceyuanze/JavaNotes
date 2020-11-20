@@ -5,6 +5,12 @@ import datastructure.util.ArrayUtil;
 import java.util.Arrays;
 
 public class CountingSort {
+
+//    计数排序中可以从头向后取数据吗？个人感觉似乎是一样的过程。可以的 但就不是稳定排序算法了
+
+
+
+
     public static void sort(int[] input){
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
