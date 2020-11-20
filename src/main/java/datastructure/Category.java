@@ -21,14 +21,22 @@ public class Category {
 //    第k大元素
 //    哨兵归并排序
 //    修复快排bug
+//    快排递归非递归写法
 
 
 
 //    done
 //    第k大元素
+//    java1.8中的排序，在元素小于47的时候用插入排序，大于47小于286用双轴快排，大于286用timsort归并排序，
+//    并在timesort中记录数据的连续的有序段的的位置，若有序段太多，也就是说数据近乎乱序，则用双轴快排，当然快
+//    排的递归调用的过程中，若排序的子数组数据数量小，用插入排序。
+
+
+
+
+
 
     public static void main(String[] args) {
-        System.out.println(1);
         throw new RuntimeException();
     }
 
