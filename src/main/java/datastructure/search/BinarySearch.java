@@ -7,6 +7,7 @@ public class BinarySearch {
         int right = input.length;
         int mid = 0;
         while(left <= right){
+//            ÓÅ»¯Ð´·¨ mid = left + ((right - left ) >> 1 )
             mid = (left+right ) / 2;
             if( input[mid].equals(value)){
                 return mid;
