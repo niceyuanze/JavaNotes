@@ -61,6 +61,46 @@ public class BinarySearch {
         }
         return -1;
     }
+    public static <T extends Comparable<T>> int firstBiggerEqualValueBinarySearchNonRecursion(T[] input, T value){
+        int left = 0;
+        int right = input.length - 1;
+        int mid;
+        int pre = -1;
+        while( left <= right){
+            mid = left + ((right - left) >> 2);
+            if( input[mid].equals(value)){
+                pre = mid;
+                right = mid - 1;
+            } else if( input[mid].compareTo(value) > 0){
+                pre = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return pre;
+    }
+
+    public static <T extends Comparable<T>> int firstLessEqualValueBinarySearchNonRecursion(T[] input, T value){
+        int left = 0;
+        int right = input.length - 1;
+        int mid = left + ( (right - left) >> 2);
+        int pre = -1;
+        while( left <= right){
+            mid = left + ((right - left) >> 2);
+            if( input[mid].equals(value)){
+                pre = mid;
+                left = mid + 1;
+            } else if( input[mid].compareTo(value) < 0){
+                pre = mid;
+                left = mid + 1;
+            } else{
+                right = mid - 1;
+            }
+        }
+        return pre;
+
+    }
 
     public static void main(String[] args) {
         System.out.println("最简单二分查找测试");
@@ -89,6 +129,12 @@ public class BinarySearch {
         System.out.println(lastValueBinarySearchNonRecursion(input,5));
         System.out.println(lastValueBinarySearchNonRecursion(input,6));
         System.out.println(lastValueBinarySearchNonRecursion(input,7));
+        System.out.println("第一个大于等于位置二分查找测试");
+        input = new Integer[]{1,3,5,6,9};
+        System.out.println(firstBiggerEqualValueBinarySearchNonRecursion(input,2));
+        System.out.println("第一个小于等于位置二分查找测试");
+        input = new Integer[]{1,3,5,6,9};
+        System.out.println(firstLessEqualValueBinarySearchNonRecursion(input,2));
 
 
     }
