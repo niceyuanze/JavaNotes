@@ -68,7 +68,8 @@ public class BinarySearch {
         }
         return -1;
     }
-
+//  https://leetcode.com/problems/search-in-rotated-sorted-array/
+//    循环有序数组的性质，任意选中期中的一个index，0 - index , index-end两个数组一定至少有一个是有序的
     public static <T extends Comparable<T>> int cycleArrayBinarySearch(T[] input, T value){
         int left = 0;
         int right = input.length - 1;
@@ -78,23 +79,25 @@ public class BinarySearch {
             if(input[mid].compareTo(value) == 0){
                 return mid;
             }
+//            left -> mid 是有序的
             if(input[left].compareTo(input[mid]) <= 0){
-                if(input[mid].compareTo(value) > 0){
-                    return simplestBinarySearchNonRecursion(input,value,left,right);
+//                元素的范围在left和mid内
+                if(input[mid].compareTo(value) > 0 && input[left].compareTo(value) <= 0){
+                    right = mid - 1;
+//                    不在，去右面的数组中寻找
                 } else {
                     left = mid + 1;
                 }
+//                mid -> end是有序的
             }else{
-
-                if(input[mid].compareTo(value) > 0){
+//                target 在mid与left范围内
+                if( input[mid].compareTo(value) < 0 && input[right].compareTo(value) >= 0){
+                    left = mid + 1;
+//                    不在，去左边数组查找
+                }else{
                     right = mid -1;
-                }else if(input[mid].compareTo(value) < 0){
-                    if(input[left].compareTo(value) <= 0 ){
-                        right = mid - 1;
-                    } else if(input[left].compareTo(value) > 0){
-                        left = mid + 1;
-                    }
                 }
+
             }
         }
         return -1;
@@ -202,7 +205,7 @@ public class BinarySearch {
         input = new Integer[]{1,3,5,6,9};
         System.out.println(lastLessEqualValueBinarySearchNonRecursion(input,2));
         input = new Integer[]{4,5,0,1,2,3};
-        System.out.println("循环数组查找");
+        System.out.println("循环数组查找 4,5,0,1,2,3");
         System.out.println(cycleArrayBinarySearch(input,4));
         System.out.println(cycleArrayBinarySearch(input,5));
         System.out.println(cycleArrayBinarySearch(input,0));
@@ -210,6 +213,15 @@ public class BinarySearch {
         System.out.println(cycleArrayBinarySearch(input,2));
         System.out.println(cycleArrayBinarySearch(input,3));
         System.out.println(cycleArrayBinarySearch(input,6));
+        System.out.println("循环数组查找 0,1,2,3,4,5");
+        input = new Integer[]{0,1,2,3,4,5};
+        System.out.println(cycleArrayBinarySearch(input,0));
+        System.out.println(cycleArrayBinarySearch(input,1));
+        System.out.println(cycleArrayBinarySearch(input,2));
+        System.out.println(cycleArrayBinarySearch(input,3));
+        System.out.println(cycleArrayBinarySearch(input,4));
+        System.out.println(cycleArrayBinarySearch(input,5));
+
 
 
 
