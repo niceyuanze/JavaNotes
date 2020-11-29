@@ -29,7 +29,11 @@ public class StackBasedOnLinkedList<T> {
             head.getPrev().setNext(null);
         }
         head = head.getPrev();
-        return null;
+        return result;
+    }
+    public boolean clear(){
+        this.head = null;
+        return true;
     }
 
     @Override
@@ -44,6 +48,7 @@ public class StackBasedOnLinkedList<T> {
         stringBuffer.append(":buttom");
         return stringBuffer.toString();
     }
+
 
     public static void main(String[] args) {
         StackBasedOnLinkedList<Integer> stackBasedOnLinkedList = new StackBasedOnLinkedList<>();
