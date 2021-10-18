@@ -93,7 +93,7 @@ public class HomeMadeSinglyLinkedList<T> {
         return false;
     }
 
-    public Node deleteNth(int lastnth){
+    public Node<T> deleteNth(int lastnth){
         Node[] cache = new Node[length];
         Node curr = head;
         int index = 0;
