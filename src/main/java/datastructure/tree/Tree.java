@@ -5,9 +5,9 @@ import datastructure.linearList.linkedList.HomeMadeSinglyLinkedList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tree {
+public class Tree<T,V> {
 
-//    private TreeNode<T> root;
+    private TreeNode<T,V> root;
 //
 //    public List<TreeNode<T>> preOrderTraverse() {
 //        return preOrderTraverse(new ArrayList<>(), root);
@@ -32,27 +32,31 @@ public class Tree {
 //        return new ArrayList<>();
 //    }
 //
-//    public HomeMadeSinglyLinkedList<TreeNode<T>> levelOrderTraverse() {
-//        HomeMadeSinglyLinkedList<TreeNode<T>> result = new HomeMadeSinglyLinkedList<>();
-//        HomeMadeSinglyLinkedList<TreeNode<T>> cache = new HomeMadeSinglyLinkedList<>();
-//        cache.put(root);
-//        levelOrderTraverse(cache, new HomeMadeSinglyLinkedList<>());
-//        return result;
-//    }
-//
-//    public void levelOrderTraverse(HomeMadeSinglyLinkedList<TreeNode<T>> cache, HomeMadeSinglyLinkedList<TreeNode<T>> result) {
-//        TreeNode<T> current = cache.deleteNth(0).getData();
-//        if (current.getLeft() == null && current.getRight() == null) {
-//            return;
-//        }
-//        if (current.getLeft() != null) {
-//            result.put(current.getLeft());
-//        }
-//        if (current.getRight() != null) {
-//            result.put(current.getRight());
-//        }
-//        levelOrderTraverse(cache, result);
-//    }
+    public HomeMadeSinglyLinkedList<TreeNode> levelOrderTraverse() {
+        HomeMadeSinglyLinkedList<TreeNode> result = new HomeMadeSinglyLinkedList<>();
+        HomeMadeSinglyLinkedList<TreeNode> cache = new HomeMadeSinglyLinkedList<>();
+        cache.put(root);
+        levelOrderTraverse(cache, new HomeMadeSinglyLinkedList<TreeNode>());
+        return result;
+    }
+
+    public void levelOrderTraverse(HomeMadeSinglyLinkedList<TreeNode> cache, HomeMadeSinglyLinkedList<TreeNode> result) {
+        if(root == null){
+            return;
+        }
+        TreeNode<T,V> current = cache.deleteNth(0).getData();
+        if (current.getLeft() == null && current.getRight() == null) {
+            result.put(current);
+            return;
+        }
+        if (current.getLeft() != null) {
+            cache.put(current.getLeft());
+        }
+        if (current.getRight() != null) {
+            cache.put(current.getRight());
+        }
+        levelOrderTraverse(cache, result);
+    }
 
 
 }

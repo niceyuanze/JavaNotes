@@ -29,6 +29,13 @@ package datastructure.tree;
  * <p>
  * <p>
  * 坐下，这些都是二叉树的基本操作！ https://mp.weixin.qq.com/s/ONKJyusGCIE2ctwT9uLv9g
+ *
+ *
+ * todo
+ * 程序编列求高度
+ * leetcode题，复习散列表
+ *
+ *
  */
 public class BinarySearchTree<T extends Comparable<T>, V> {
 
@@ -105,6 +112,13 @@ public class BinarySearchTree<T extends Comparable<T>, V> {
 
     /**
      * 深度优先求树的高度
+     * <p>
+     * <p>
+     * 确定二叉树高度有两种思路：第一种是深度优先思想的递归，分别求左右子树的高度。当前节点的高度就是左右子树中较大的那个+1；
+     * 第二种可以采用层次遍历的方式，每一层记录都记录下当前队列的长度，
+     * 这个是队尾，每一层队头从0开始。然后每遍历一个元素，队头下标+1。
+     * 直到队头下标等于队尾下标。这个时候表示当前层遍历完成。每一层刚开始遍历的时候，树的高度+1。最后队列为空，就能得到树的高度。
+     *
      * @param root
      * @return
      */
